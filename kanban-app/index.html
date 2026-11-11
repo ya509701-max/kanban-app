@@ -1,0 +1,109 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Task Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar-content">
+            <h1>▣ Kanban</h1>
+            <button id="addTaskButton" class="add-button">+</button>
+        </div>
+    </header>
+
+    <main class="board">
+        <section class="column">
+            <div class="column-header">
+                <div class="column-icon todo-icon">▤</div>
+                <div>
+                    <h2>To Do</h2>
+                    <p id="todoCount">0 tasks</p>
+                </div>
+            </div>
+            <div id="todoList" class="task-list"></div>
+        </section>
+
+        <section class="column">
+            <div class="column-header">
+                <div class="column-icon progress-icon">✣</div>
+                <div>
+                    <h2>In Progress</h2>
+                    <p id="progressCount">0 tasks</p>
+                </div>
+            </div>
+            <div id="progressList" class="task-list"></div>
+        </section>
+
+        <section class="column">
+            <div class="column-header">
+                <div class="column-icon completed-icon">✓</div>
+                <div>
+                    <h2>Completed</h2>
+                    <p id="completedCount">0 tasks</p>
+                </div>
+            </div>
+            <div id="completedList" class="task-list"></div>
+        </section>
+    </main>
+
+    <footer>
+        Made with <span>♥</span> by Route Academy
+    </footer>
+
+    <div id="taskModal" class="modal-backdrop hidden">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="modalTitle">Create New Task</h2>
+                <button id="closeModalButton" type="button">×</button>
+            </div>
+
+            <form id="taskForm">
+                <input type="hidden" id="taskId">
+
+                <label>
+                    Task Title <span>*</span>
+                    <input id="taskTitle" type="text" placeholder="What needs to be done?" maxlength="100" required>
+                    <small id="titleError"></small>
+                </label>
+
+                <div class="form-row">
+                    <label>
+                        Priority
+                        <select id="taskPriority">
+                            <option value="low">Low</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        Due Date
+                        <input id="taskDueDate" type="date">
+                    </label>
+                </div>
+
+                <label>
+                    Description
+                    <textarea id="taskDescription" maxlength="500" placeholder="Add more details about this task..."></textarea>
+                    <small class="char-count"><span id="descriptionCount">0</span>/500</small>
+                </label>
+
+                <div class="modal-actions">
+                    <button id="cancelButton" type="button">Cancel</button>
+                    <button id="saveTaskButton" type="submit">＋ Add Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
